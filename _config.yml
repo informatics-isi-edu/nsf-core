@@ -1,0 +1,13 @@
+---
+name: "NSF Learning Based Optimization project"
+baseurl: "/learning-based-optimization"
+
+description: "Site for the NSF Learning Based Optimization project"
+
+markdown: kramdown
+
+permalink: pretty
+
+exclude:
+- ".gitignore"
+- CNAME

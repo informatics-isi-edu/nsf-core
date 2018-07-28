@@ -1,0 +1,47 @@
+	</div>
+</div>
+<div class="push"></div>
+<div id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-md-4">
+				<a href="https://www.nih.gov/">
+					<img src="{{"/assets/img/nih-logo-color.png" | relative_url }}" alt="Logo of the DERIVA system" height="60px" style="padding-top:10px">
+				</a>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<p><a href="{{"/about/" | relative_url }}">About</a> | <a href="{{"/contact/" | relative_url }}">Contact</a> | <a href="{{"/privacy-policy/" | relative_url }}">Privacy</a></p>
+				<p>&copy; University of Southern California</p>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<a href="http://deriva.isrd.isi.edu/">
+					<img src="{{"/assets/img/deriva-dark-bg.png" | relative_url }}" alt="Logo of the DERIVA system" height="70px">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- javascript -->
+
+	<script>
+	$(document).ready(function(){ 
+			HOME = window.location.origin;
+
+  			$('ul.nav li.toplevel a[href^="/' + location.pathname.split("/")[1] + '"]').parent(".toplevel").addClass('active');
+  			//getSession();
+		});
+	</script>
+	<!-- Notifies older browsers that they are too old -->
+	<script> 
+		var $buoop = {vs:{i:9,f:40,o:30,s:7,c:50},c:4}; 
+		function $buo_f(){ 
+		 var e = document.createElement("script"); 
+		 e.src = "/assets/js/update.min.js"; 
+		 document.body.appendChild(e);
+		};
+		try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+		catch(e){window.attachEvent("onload", $buo_f)}
+</script>
+
+</body>
+</html>

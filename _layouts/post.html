@@ -1,0 +1,9 @@
+{% include header.html %}
+
+  <h2>{{ page.title }}</h2>
+  <h4 class="pub-date">Published {{ page.date | date_to_long_string }}</h4>
+  <div class="innercontent">
+		{{ content }}
+	</div>
+  
+{% include footer.html %}
