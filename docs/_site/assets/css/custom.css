@@ -1,0 +1,599 @@
+/* Using image for brand in navbar 
+Comment out the next two rules to use text instead
+*/
+
+a.navbar-brand {
+padding: 0;
+}
+
+span#brand-text {
+  text-indent: -999px;
+  background: url('/learning-based-optimization/assets/img/deriva-h50-simple.png') no-repeat;
+  height: 50px;
+  display: block;
+  width: 170px;
+  background-size: contain;
+}
+
+/* The rest of the custom stylesheet */
+
+* {
+margin: 0;
+}
+
+html,body {
+	height: 100%;
+}
+
+ body { padding-top: 70px; color: #212121;}
+
+ h1, h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2, .h2 {
+	font-size: 30px;
+	font-weight: 400;
+  margin-top: 40px;
+}
+
+h3 {
+	padding-top: 20px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 16px;
+}
+
+h4, h5, h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+figure {
+	padding-bottom: 10px;
+}
+
+figure img {
+	border: 1px solid #333;
+}
+
+.bg-info, .bg-success, .bg-warning, .bg-danger {
+	padding: 15px;
+}
+
+a.anchor {
+display: block;
+position: relative;
+top: -45px;
+visibility: hidden;
+}
+
+.btn.btn-success {
+		background: #1598db none repeat scroll 0 0 ;
+		border-color: #1598db;
+}
+
+.lead.announce {
+	text-align: center;
+	margin-top: 20px;
+	padding-right: 40px;
+	padding-left: 40px;
+	font-size: 1.12em;
+}
+
+
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin-bottom: -80px;
+}
+/*
+.navbar {
+	min-height: 80px;
+}
+*/
+.navbar-inverse .navbar-toggle {
+    border-color: #ccc;
+    color: #ccc;
+}
+
+.navbar-inverse .navbar-toggle:hover {
+    border-color: #ccc;
+    color: #333;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #CCC;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #4DB9EE;
+}
+
+.navbar-inverse {
+    background-color: #150805;
+    border-color: #150805;
+}
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>.active>a {
+    color: #C1C1C1;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	background-color: #150805;
+}
+
+.navbar-inverse .navbar-nav > li.login > a, .navbar-inverse .navbar-nav > li.signup > a, .navbar-inverse .navbar-nav > li.user > a, .navbar-inverse .navbar-nav > li.logout > a {
+	color: #6DD0FF;
+}
+
+@media (min-width: 768px) {
+	.navbar-nav {
+	    float: left;
+	    margin: 0 0 0 35px;
+	}
+
+}
+
+/* for dropdown menu items */
+
+.dropdown-divider {
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.42857;
+    padding: 9px 20px 3px;
+    white-space: nowrap;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 6px 0 6px 6px; /* was 5px 0 5px 5px */
+    border-left-color: #428bca; /* was #ccc */
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #777; /* was #fff */
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+#content {
+	padding-bottom: 90px;
+	width: 920px;
+	margin-left: 220px;
+}
+
+.innercontent {
+	padding: 20px 10%;
+	font-size: 1.2em;
+	line-height: 1.5;
+}
+
+.home h3 {
+	margin-top: 0;
+	text-align: left;
+	padding-bottom: 0;
+}
+
+.container .jumbotron {
+    padding: 20px 60px;
+    margin-bottom: 0;
+	/* padding: 15px; */
+    /* background-color: inherit; */
+    /* border: 1px solid #ccc; */
+}
+
+#content .jumbotron p {
+	font-size: 1.2em;
+	margin-bottom: 0;
+	font-weight: normal;
+}
+
+
+.jumbotron .thumbnail {
+	border:0px;
+  border-radius:0px;
+  margin:0 0 10px 0;
+  padding:0px;
+}
+
+.container .jumbotron .thumbnail.species {
+	margin-bottom: 0;
+}
+
+.home h2 {
+	font-size: 40px;
+	font-weight: 200;
+	margin-bottom: 15px;
+	margin-top: 35px;
+	text-align: center;
+}
+/* next couple rules had weird conflict */
+.home p {
+	font-size: 18px;
+}
+
+.panel-primary {
+    border-color: #727272; 
+		border-color: #fff;
+}
+
+#footer {
+	height: 80px;
+	background-color: #000;
+	color: #C1C1C1;
+	padding: 10px;
+	text-align: center;
+	
+}
+
+#footer a {
+	color: #C1C1C1;
+	text-decoration: none;
+}
+
+#footer img {
+	vertical-align: middle;
+}
+
+#footer.browser-footer {
+	margin-top: 0;
+}
+
+
+@media (max-width: 770px) {
+	.media-body, .media-left, .media-right {
+	    display: table-cell;
+	    vertical-align: top;
+	}
+
+}
+.media-left, .media > .pull-left {
+    padding-bottom: 10px;
+		padding-right: 10px;
+}
+
+.form-group.required label:after {
+  content:" *";
+  color:red;
+}
+
+@media (max-width: 768px) {
+  #content {
+    margin-left: 0;
+  }
+}
+
+
+/* Extra Large Col Styles */
+
+/*
+*   CSS file with Bootstrap grid classes for screens bigger than 1600px. Just add this file after the Bootstrap CSS file and you will be able to juse col-xl, col-xl-push, hidden-xl, etc.
+*
+*   Author: Marc van Nieuwenhuijzen
+*   Company: WebVakman
+*   Site: WebVakman.nl
+*
+*/
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .hidden-lg {
+        display: none !important;
+    }
+}
+
+.visible-xl-block,
+.visible-xl-inline,
+.visible-xl-inline-block,
+.visible-xl{
+    display: none !important;
+}
+
+
+@media (min-width: 1600px) {
+    .container {
+        width: 1570px;
+    }
+
+    .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
+        float: left;
+    }
+
+    .col-xl-12 {
+        width: 100%;
+    }
+
+    .col-xl-11 {
+        width: 91.66666667%;
+    }
+
+    .col-xl-10 {
+        width: 83.33333333%;
+    }
+
+    .col-xl-9 {
+        width: 75%;
+    }
+
+    .col-xl-8 {
+        width: 66.66666667%;
+    }
+
+    .col-xl-7 {
+        width: 58.33333333%;
+    }
+
+    .col-xl-6 {
+        width: 50%;
+    }
+
+    .col-xl-5 {
+        width: 41.66666667%;
+    }
+
+    .col-xl-4 {
+        width: 33.33333333%;
+    }
+
+    .col-xl-3 {
+        width: 25%;
+    }
+
+    .col-xl-2 {
+        width: 16.66666667%;
+    }
+
+    .col-xl-1 {
+        width: 8.33333333%;
+    }
+
+    .col-xl-pull-12 {
+        right: 100%;
+    }
+
+    .col-xl-pull-11 {
+        right: 91.66666667%;
+    }
+
+    .col-xl-pull-10 {
+        right: 83.33333333%;
+    }
+
+    .col-xl-pull-9 {
+        right: 75%;
+    }
+
+    .col-xl-pull-8 {
+        right: 66.66666667%;
+    }
+
+    .col-xl-pull-7 {
+        right: 58.33333333%;
+    }
+
+    .col-xl-pull-6 {
+        right: 50%;
+    }
+
+    .col-xl-pull-5 {
+        right: 41.66666667%;
+    }
+
+    .col-xl-pull-4 {
+        right: 33.33333333%;
+    }
+
+    .col-xl-pull-3 {
+        right: 25%;
+    }
+
+    .col-xl-pull-2 {
+        right: 16.66666667%;
+    }
+
+    .col-xl-pull-1 {
+        right: 8.33333333%;
+    }
+
+    .col-xl-pull-0 {
+        right: auto;
+    }
+
+    .col-xl-push-12 {
+        left: 100%;
+    }
+
+    .col-xl-push-11 {
+        left: 91.66666667%;
+    }
+
+    .col-xl-push-10 {
+        left: 83.33333333%;
+    }
+
+    .col-xl-push-9 {
+        left: 75%;
+    }
+
+    .col-xl-push-8 {
+        left: 66.66666667%;
+    }
+
+    .col-xl-push-7 {
+        left: 58.33333333%;
+    }
+
+    .col-xl-push-6 {
+        left: 50%;
+    }
+
+    .col-xl-push-5 {
+        left: 41.66666667%;
+    }
+
+    .col-xl-push-4 {
+        left: 33.33333333%;
+    }
+
+    .col-xl-push-3 {
+        left: 25%;
+    }
+
+    .col-xl-push-2 {
+        left: 16.66666667%;
+    }
+
+    .col-xl-push-1 {
+        left: 8.33333333%;
+    }
+
+    .col-xl-push-0 {
+        left: auto;
+    }
+
+    .col-xl-offset-12 {
+        margin-left: 100%;
+    }
+
+    .col-xl-offset-11 {
+        margin-left: 91.66666667%;
+    }
+
+    .col-xl-offset-10 {
+        margin-left: 83.33333333%;
+    }
+
+    .col-xl-offset-9 {
+        margin-left: 75%;
+    }
+
+    .col-xl-offset-8 {
+        margin-left: 66.66666667%;
+    }
+
+    .col-xl-offset-7 {
+        margin-left: 58.33333333%;
+    }
+
+    .col-xl-offset-6 {
+        margin-left: 50%;
+    }
+
+    .col-xl-offset-5 {
+        margin-left: 41.66666667%;
+    }
+
+    .col-xl-offset-4 {
+        margin-left: 33.33333333%;
+    }
+
+    .col-xl-offset-3 {
+        margin-left: 25%;
+    }
+
+    .col-xl-offset-2 {
+        margin-left: 16.66666667%;
+    }
+
+    .col-xl-offset-1 {
+        margin-left: 8.33333333%;
+    }
+
+    .col-xl-offset-0 {
+        margin-left: 0;
+    }
+
+    .visible-xl {
+        display: block !important;
+    }
+
+    table.visible-xl {
+        display: table;
+    }
+
+    tr.visible-xl {
+        display: table-row !important;
+    }
+
+    th.visible-xl, td.visible-xl {
+        display: table-cell !important;
+    }
+
+    .visible-xl-block {
+        display: block !important;
+    }
+
+    .visible-xl-inline {
+        display: inline !important;
+    }
+
+    .visible-xl-inline-block {
+        display: inline-block !important;
+    }
+
+    .hidden-xl {
+        display: none !important;
+    }
+}
+
+/* Gene Expression Profiles 
+
+table td div {
+	width: 10px;
+  height: 10px;
+  float: left;
+  border: 3;
+  border-style: ridge;
+}
+*/

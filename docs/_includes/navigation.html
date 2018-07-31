@@ -1,0 +1,28 @@
+<ul class="nav navbar-nav">
+			  	{% for item in site.data.nav %}
+			  		{% if item.subcategories != null %}
+			  		<li class="dropdown toplevel">
+						<a href="{{site.baseurl}}{{ item.href }}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title }}<span class="caret"></span></a>
+						<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+						{% for subcategory in item.subcategories %}
+							{% if subcategory.subsubcategories != null %}
+       							<li class="dropdown-submenu"><a href="{{ subcategory.subhref }}">{{ subcategory.subtitle }}</a>
+       								<ul class="dropdown-menu">
+       									{% for subsubcategory in subcategory.subsubcategories %}
+		                  				<li><a tabindex="-1" href="{{ subsubcategory.subsubhref }}" target="{{ subsubcategory.subsubtarget }}">{{ subsubcategory.subsubtitle }}</a></li>
+		                  				{% endfor %}
+		                			</ul>
+       							</li>
+							{% else %}
+       						<li><a href="{{ subcategory.subhref }}" target="{{ subcategory.target }}">{{ subcategory.subtitle }}</a>
+       						</li>
+							{% endif %}
+  						{% endfor %}
+  						</ul>
+  					{% else %}            		
+            		<li class="toplevel">
+            		<a href="{{site.baseurl}}{{ item.href }}">{{ item.title }}</a>
+            		{% endif %}
+            		</li>
+  				{% endfor %}
+			</ul>
