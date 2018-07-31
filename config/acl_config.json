@@ -1,0 +1,59 @@
+{
+    "groups" : {
+        "empty" : [],
+        "public" : [
+            "*"
+        ],
+        "isrd-staff" : [
+            "https://auth.globus.org/176baec4-ed26-11e5-8e88-22000ab4b42b"
+        ],
+        "isrd-systems" : [
+            "https://auth.globus.org/3938e0d0-ed35-11e5-8641-22000ab4b42b"
+        ],
+        "isrd-testers" : [
+            "https://auth.globus.org/9d596ac6-22b9-11e6-b519-22000aef184d"
+        ],
+        "isrd-only" : [
+            "isrd-staff",
+            "isrd-systems"
+        ],
+        "isrd-all" : [
+            "isrd-systems",
+            "isrd-staff",
+            "isrd-testers"
+        ],
+        "leo-writers" : [
+            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        ],
+        "leo-readers" : [
+            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        ],
+        "leo-admins" : [
+            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        ],            
+        "leo-writers-and-isrd" : [
+            "leo-writers",
+            "isrd-only"
+        ],
+        "leo-admins-and-isrd" : [
+            "leo-writers",
+            "isrd-only"
+        ],      
+        "admins": [
+            "isrd-systems",
+            "isrd-staff"
+        ]
+    },
+    "acl_definitions" : {
+        "catalog-policy" : {
+            "create" : "leo-writers-and-isrd",
+            "enumerate" : "public",
+            "owner" : "leo-admins-and-isrd",
+            "select" : "leo-readers",
+            "write" : "leo-writers-and-isrd"
+        }
+    },
+    "catalog_acl" : {
+        "acl" : "catalog-policy"
+    }
+}
