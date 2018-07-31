@@ -35,6 +35,7 @@
             "core-writers",
             "isrd-only"
         ],
+
         "core-admins-and-isrd" : [
             "core-writers",
             "isrd-only"
