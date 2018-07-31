@@ -22,21 +22,21 @@
             "isrd-staff",
             "isrd-testers"
         ],
-        "leo-writers" : [
-            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        "core-writers" : [
+            "https://auth.globus.org/72bdb36c-9503-11e8-8c03-0e847f194132"
         ],
-        "leo-readers" : [
-            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        "core-readers" : [
+            "https://auth.globus.org/5bd8b30e-9503-11e8-ba34-0e5b3fbbcf14"
         ],
-        "leo-admins" : [
-            "https://auth.globus.org/01579fd6-6fdc-11e8-8d99-0a043b872764"
+        "core-admins" : [
+            "https://auth.globus.org/80af39fa-9503-11e8-88d8-0a7d99bc78fe"
         ],            
-        "leo-writers-and-isrd" : [
-            "leo-writers",
+        "core-writers-and-isrd" : [
+            "core-writers",
             "isrd-only"
         ],
-        "leo-admins-and-isrd" : [
-            "leo-writers",
+        "core-admins-and-isrd" : [
+            "core-writers",
             "isrd-only"
         ],      
         "admins": [
@@ -46,11 +46,11 @@
     },
     "acl_definitions" : {
         "catalog-policy" : {
-            "create" : "leo-writers-and-isrd",
+            "create" : "core-writers-and-isrd",
             "enumerate" : "public",
-            "owner" : "leo-admins-and-isrd",
-            "select" : "leo-readers",
-            "write" : "leo-writers-and-isrd"
+            "owner" : "core-admins-and-isrd",
+            "select" : "public",
+            "write" : "core-writers-and-isrd"
         }
     },
     "catalog_acl" : {
