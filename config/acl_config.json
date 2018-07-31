@@ -36,7 +36,7 @@
             "isrd-only"
         ],
         "leo-admins-and-isrd" : [
-            "leo-writers",
+            "leo-admins",
             "isrd-only"
         ],      
         "admins": [
@@ -49,7 +49,7 @@
             "create" : "leo-writers-and-isrd",
             "enumerate" : "public",
             "owner" : "leo-admins-and-isrd",
-            "select" : "leo-readers",
+            "select" : "public",
             "write" : "leo-writers-and-isrd"
         }
     },
