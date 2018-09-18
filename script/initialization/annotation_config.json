@@ -1,0 +1,676 @@
+{
+  "schema_annotations": [
+    {
+      "schema": "public",
+      "uri": "tag:misd.isi.edu,2015:display",
+      "value": {
+        "name_style": {
+          "underline_space": true,
+          "title_case": false
+        }
+      }
+    },
+    {
+      "schema": "Vocab",
+      "uri": "tag:misd.isi.edu,2015:display",
+      "value": {
+        "name_style": {
+          "underline_space": true,
+          "title_case": false
+        }
+      }
+    }
+  ],
+  "known_attributes": {
+    "ignore_all_unmanaged": false,
+    "managed": [
+      "tag:isrd.isi.edu,2017:bulk-upload",
+      "tag:isrd.isi.edu,2016:export",
+      "tag:isrd.isi.edu,2016:column-display",
+      "tag:isrd.isi.edu,2016:display",
+      "tag:isrd.isi.edu,2016:foreign-key",
+      "tag:isrd.isi.edu,2016:generated",
+      "tag:isrd.isi.edu,2016:ignore",
+      "tag:isrd.isi.edu,2016:immutable",
+      "tag:isrd.isi.edu,2016:recordlink",
+      "tag:isrd.isi.edu,2016:table-alternatives",
+      "tag:isrd.isi.edu,2016:table-display",
+      "tag:isrd.isi.edu,2016:visible-columns",
+      "tag:isrd.isi.edu,2016:visible-foreign-keys",
+      "tag:isrd.isi.edu,2017:asset",
+      "tag:misd.isi.edu,2015:display",
+      "tag:misd.isi.edu,2015:url",
+      "tag:misd.isi.edu,2016:generated",
+      "comment",
+      "description",
+      "facetOrder"
+    ]
+  },
+  "table_annotations": [
+      {
+         "schema" : "Vocab",
+         "table" : "File_Category",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "*" : [
+           "RID",
+           "name",
+           "description",
+           "RCT"
+         ],
+            "entry" : [
+           "name",
+           "description"
+         ]
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Step_Type",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "*" : [
+           "RID",
+           "name",
+           "description",
+           "RCT"
+         ],
+            "entry" : [
+           "name",
+           "description"
+         ]
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "File",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+                  {
+                     "markdown_name" : "File Category",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "File_Category_RID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+           "Name",
+           "URI",
+           "Description",
+           "RCT"
+         ],
+            "detailed" : "compact"
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "File_Metadata",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+           "File_RID",
+           "Metadata_RID",
+           "RCT",
+           "RMT"
+         ],
+            "detailed" : "compact",
+            "entry" : "compact"
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Metadata",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "*" : [
+           "RID",
+           "name",
+           "description",
+           "RCT"
+         ],
+           "entry" : [
+           "name",
+           "description"
+         ]
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Domain",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "*" : [
+           "RID",
+           "name",
+           "description",
+           "RCT"
+         ],
+            "entry" : [
+           "name",
+           "description"
+         ]
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Subdomain",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+                  {
+                     "markdown_name" : "Domain",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "Vocab",
+                              "Subdomain_Domain_ID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+           "name",
+           "description",
+           "RCT"
+         ],
+            "detailed" : "compact"
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Program",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+           "name",
+           "description",
+           "Reference",
+           "Version",
+           "Environment",
+           "RCT"
+         ],
+            "detailed" : "compact"
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "Instance",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+           "Name",
+           "Description",
+                  {
+                     "markdown_name" : "Domain",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Instance_Subdomain_RID_fkey"
+                           ]
+                        },
+                        {
+                           "outbound" : [
+                              "Vocab",
+                              "Subdomain_Domain_ID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+                  {
+                     "markdown_name" : "Subdomain",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Instance_Subdomain_RID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+           "RCT"
+         ],
+            "detailed" : "compact"
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "File",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Domain",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{name}}}"
+            }
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Subdomain",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{name}}}"
+            }
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "File_Category",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "Step",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "*" : [
+           "RID",
+                  {
+                     "markdown_name" : "Instance Name",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_Instance_RID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+           "Sequence",
+           "Name",
+           "Description",
+                  {
+                     "markdown_name" : "Step Type",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_Steptype_ID_fkey"
+                           ]
+                        },
+                        "id"
+                     ]
+                  },
+                  {
+                     "markdown_name" : "Program",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_Program_ID_fkey"
+                           ]
+                        },
+                        "id"
+                     ]
+                  },
+           "RCT"
+         ]
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "Step_Input_File",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+            "compact" : [
+           "RID",
+                  {
+                     "markdown_name" : "Instance Name",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_InputFile_Mapping_Step_RID_fkey"
+                           ]
+                        },
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_Instance_RID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+                  {
+                     "markdown_name" : "Step Name",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_InputFile_Mapping_Step_RID_fkey"
+                           ]
+                        },
+                        "Step_Name"
+                     ]
+                  },
+                  {
+                     "markdown_name" : "File Name",
+                     "source" : [
+                        {
+                           "outbound" : [
+                              "public",
+                              "Step_InputFile_Mapping_File_RID_fkey"
+                           ]
+                        },
+                        "RID"
+                     ]
+                  },
+           "RCT"
+         ],
+            "detailed" : "compact"
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "Instance",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "*" : {
+               "row_order" : [
+                  {
+                     "column" : "RCT",
+                     "descending" : true
+                  }
+               ]
+            },
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      },
+      {
+         "schema" : "public",
+         "table" : "Step",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      }
+  ],
+  "column_annotations": [
+      {
+         "column" : "id",
+         "schema_pattern" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "uri",
+         "schema_pattern" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "name",
+         "schema" : "Vocab",
+         "table" : "Subdomain",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Subdomain"
+         }
+      },
+      {
+         "column" : "description",
+         "schema" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Description"
+         }
+      },
+      {
+         "column" : "name",
+         "schema" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Name"
+         }
+      },
+      {
+         "column" : "Instance_RID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Instance"
+         }
+      },
+      {
+         "column" : "Category_ID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Category"
+         }
+      },
+      {
+         "column" : "Step_RID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Step"
+         }
+      },
+      {
+         "column" : "Step_Type_ID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Step Type"
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Step_Type",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Step Type"
+         }
+      },
+      {
+         "column" : "Subdomain_ID",
+         "schema_pattern" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Subdomain"
+         }
+      },
+      {
+         "column" : "Subdomain_ID",
+         "schema_pattern" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Subdomain"
+         }
+      },
+      {
+         "column" : "Domain_ID",
+         "schema_pattern" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Domain"
+         }
+      },
+      {
+         "column" : "Domain_ID",
+         "schema_pattern" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Domain"
+         }
+      },
+      {
+         "column" : "URI",
+         "schema" : "public",
+         "table" : "File",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "File"
+         }
+      },
+      {
+         "column" : "File_RID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "File"
+         }
+      },
+      {
+         "column" : "Category_RID",
+         "schema" : "public",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Category"
+         }
+      },
+      {
+         "column" : "RMT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Last Modified Time"
+         }
+      },
+      {
+         "column" : "RCT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Creation Time"
+         }
+      },
+      {
+         "column" : "RCB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:immutable",
+         "value" : null
+      },
+      {
+         "column" : "RCB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "RMB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:immutable",
+         "value" : null
+      },
+      {
+         "column" : "RMB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "RCT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:immutable",
+         "value" : null
+      },
+      {
+         "column" : "RCT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "RMT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:immutable",
+         "value" : null
+      },
+      {
+         "column" : "RMT",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "column" : "URI",
+         "schema" : "public",
+         "table" : "File",
+         "uri" : "tag:isrd.isi.edu,2017:asset",
+         "value" : {
+            "byte_count_column" : "Size",
+            "filename_column" : "Name",
+            "md5" : "MD5",
+            "url_pattern" : "/hatrac/resources/public/file_category/{{{Category_RID}}}/file/{{{MD5}}}"
+         }
+      }
+  ],
+     "foreign_key_annotations" : [
+      {
+         "foreign_key_pattern" : "Step_Instance_RID_fkey",
+         "foreign_key_schema" : "public",
+         "schema" : "public",
+         "table_pattern" : "Step",
+         "uri" : "tag:isrd.isi.edu,2016:foreign-key",
+         "value" : {
+            "display" : {
+               "compact" : {
+                  "column_order" : [
+                     "Instance_RID",
+                     "Sequence"
+                  ]
+               }
+            }
+         }
+      }
+  ]
+}
