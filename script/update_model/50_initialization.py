@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Aug 17 13:20:50 2018
-
-@author: qingj
-"""
-
-
 from deriva.core import DerivaServer, get_credential
 from deriva.core.ermrest_model import Table, Column, Key, builtin_types,ForeignKey,builtin_types as typ
 import argparse

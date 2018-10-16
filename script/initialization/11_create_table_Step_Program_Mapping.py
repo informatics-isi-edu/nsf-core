@@ -22,49 +22,39 @@ config = catalog.getCatalogConfig()
 
 
 column_defs = [ 
-  Column.define("Sequence", typ.text),   
-  Column.define("Name", typ.text),  
-  Column.define("Description", typ.text), 
-  Column.define("Instruction", typ.text), 
-  Column.define("Step_Type_ID", typ.text),
-  Column.define("Instance_RID", typ.text), 
+  Column.define("Step_RID", typ.text), 
+  Column.define("Program_RID", typ.text), 
 ]
 key_defs = [
   Key.define(
-    ["Instance_RID","Name"], # this is a list to allow for compound keys
-    constraint_names=[ [schema_name, "Instance_RID_Step_Name_key"] ],
-    comment="Instance plus step name must be distinct.",
+    ["Step_RID","Program_RID"], # this is a list to allow for compound keys
+    constraint_names=[ [schema_name, "Step_Program_Mapping_RID_key"] ],
+    comment="Step plus program must be distinct.",
     annotations={},
-  ),Key.define(
-    ["Instance_RID","Sequence"], # this is a list to allow for compound keys
-    constraint_names=[ [schema_name, "Instance_RID_Step_Sequence_key"] ],
-    comment="Instance plus step sequence must be distinct.",
-    annotations={},
-    ),
+  )
 ]
 
 fkey_defs = [
   ForeignKey.define(
-    ["Instance_RID"], # this is a list to allow for compound foreign keys
+    ["Step_RID"], # this is a list to allow for compound foreign keys
     "Core",
-    "Instance",
+    "Step",
     ["RID"], # this is a list to allow for compound keys
     on_update='CASCADE',
     on_delete='SET NULL',
-    constraint_names=[ [schema_name, "Step_Instance_RID_fkey"] ],
+    constraint_names=[ [schema_name, "Step_Program_Mapping_Step_RID_fkey"] ],
     comment="",
     acls={},
     acl_bindings={},
     annotations={},
-  ),
-  ForeignKey.define(
-    ["Step_Type_ID"], # this is a list to allow for compound foreign keys
-    "Vocab",
-    "Step_Type",
-    ["id"], # this is a list to allow for compound keys
+  ),ForeignKey.define(
+    ["Program_RID"], # this is a list to allow for compound foreign keys
+    "Core",
+    "Program",
+    ["RID"], # this is a list to allow for compound keys
     on_update='CASCADE',
     on_delete='SET NULL',
-    constraint_names=[ [schema_name, "Step_Steptype_ID_fkey"] ],
+    constraint_names=[ [schema_name, "Step_Program_Mapping_Program_RID_fkey"] ],
     comment="",
     acls={},
     acl_bindings={},
@@ -73,11 +63,11 @@ fkey_defs = [
 ]
 
 table_def = Table.define(
-  "Step",
+  "Step_Program",
   column_defs,
   key_defs=key_defs,
   fkey_defs=fkey_defs,
-  comment="Step information of the instance",
+  comment="",
   acls={},
   acl_bindings={},
   annotations={},

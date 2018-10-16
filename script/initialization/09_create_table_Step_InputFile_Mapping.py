@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 30 12:30:13 2018
-
-@author: qingj
-"""
-
-
 from deriva.core import DerivaServer, get_credential
 from deriva.core.ermrest_model import Table, Column, Key, builtin_types,ForeignKey,builtin_types as typ
 import argparse
@@ -45,25 +37,25 @@ key_defs = [
 fkey_defs = [
   ForeignKey.define(
     ["Step_RID"], # this is a list to allow for compound foreign keys
-    "public",
+    "Core",
     "Step",
     ["RID"], # this is a list to allow for compound keys
     on_update='CASCADE',
     on_delete='SET NULL',
     constraint_names=[ [schema_name, "Step_InputFile_Mapping_Step_RID_fkey"] ],
-    comment="Step_RID must be a valid reference value from the Step table.",
+    comment="",
     acls={},
     acl_bindings={},
     annotations={},
   ),ForeignKey.define(
     ["File_RID"], # this is a list to allow for compound foreign keys
-    "public",
+    "Core",
     "File",
     ["RID"], # this is a list to allow for compound keys
     on_update='CASCADE',
     on_delete='SET NULL',
     constraint_names=[ [schema_name, "Step_InputFile_Mapping_File_RID_fkey"] ],
-    comment="File_RID must be a valid reference value from the File table.",
+    comment="",
     acls={},
     acl_bindings={},
     annotations={},

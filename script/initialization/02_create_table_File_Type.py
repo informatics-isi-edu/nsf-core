@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 30 12:30:13 2018
-
-@author: qingj
-"""
-
 from deriva.core import HatracStore, ErmrestCatalog, get_credential, DerivaPathError
 import deriva.core.ermrest_model as em
 import argparse
@@ -21,7 +14,7 @@ schema_name = args.schema_name
 catalog_number = args.catalog_number
 
 term_table = 'File_Category'
-term_comment = 'file category'
+term_comment = ''
 
 credential = get_credential(hostname)
 catalog = ErmrestCatalog('https', hostname, catalog_number, credentials=credential)
@@ -32,12 +25,6 @@ def create_vocabulary_table(catalog,term_table, term_comment):
         model_root.schemas[schema_name].create_table(catalog, em.Table.define_vocabulary(term_table,'CORE:{RID}',comment=term_comment)
 )
         
-
 create_vocabulary_table(catalog,term_table,term_comment)
-
-
-#path = '/entity/File_Category'
-#data = [{"Name":"Raw File"},{"Name":"Input/Output File"},{"Name":"Program File"}]
-#resp = catalog.post(path, json=data)
 
 

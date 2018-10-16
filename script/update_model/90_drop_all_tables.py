@@ -23,11 +23,12 @@ schema = model_root.schemas[schema]
 
 table_list = ['Step_Input_File'
               ,'Step_Output_File'
+              ,'Step_Program'
               ,'Step'
+              ,'Instance_Keywords'
               ,'Instance'
               ,'File_Metadata'
               ,'File'
-              ,'TEST_File'
               ]
 
 for i in range(len(table_list)):
@@ -51,12 +52,13 @@ for t in schema.tables:
         continue
 
 
-table_list = ['Subdomain',
+table_list = [
               'Domain',
               'Step_Type',
+              'Keywords',
               'Metadata',
               'File_Category',
-              'Program'
+              'Instance_Level'
               ]
 schema = 'Vocab'
 schema = model_root.schemas[schema]
@@ -65,6 +67,3 @@ for i in range(len(table_list)):
         tab = schema.tables[table_list[i]]
         tab.delete(catalog)
         print('table deleted: %s',table_list[i])
-
-
-#catalog.delete('/entity/data_commons:cvterm').raise_for_status()

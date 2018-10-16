@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 30 12:30:13 2018
-
-@author: qingj
-"""
-
-
 from deriva.core import DerivaServer, get_credential
 from deriva.core.ermrest_model import Table, Column, Key,ForeignKey,builtin_types as typ
 import argparse
@@ -55,7 +47,7 @@ fkey_defs = [
     on_update='CASCADE',
     on_delete='SET NULL',
     constraint_names=[ [schema_name, "File_Category_RID_fkey"] ],
-    comment="Category_ID must be a valid reference value from the File_Category table.",
+    comment="",
     acls={},
     acl_bindings={},
     annotations={},
@@ -68,7 +60,7 @@ table_def = Table.define(
   column_defs,
   key_defs=key_defs,
   fkey_defs=fkey_defs,
-  comment="file information.",
+  comment="file information",
   acls={},
   acl_bindings={},
   annotations={},

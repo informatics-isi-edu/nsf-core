@@ -1,0 +1,36 @@
+{
+    "groups" : {
+        "empty" : [],
+        "public" : [
+            "*"
+        ],
+        "core-admins" : [
+            "https://auth.globus.org/80af39fa-9503-11e8-88d8-0a7d99bc78fe"
+        ],
+        "core-readers" : [
+            "https://auth.globus.org/5bd8b30e-9503-11e8-ba34-0e5b3fbbcf14"
+        ],
+        "core-writers" : [
+            "https://auth.globus.org/72bdb36c-9503-11e8-8c03-0e847f194132"
+        ],
+        "isrd-staff" : [
+            "https://auth.globus.org/176baec4-ed26-11e5-8e88-22000ab4b42b"
+        ],
+        "admins": [
+            "core-admins",
+            "isrd-staff"
+        ]
+    },
+    "acl_definitions" : {
+        "catalog-policy" : {
+            "create" : "core-writers",
+            "enumerate" : "public",
+            "owner" : "admins",
+            "select" : "public",
+            "write" : "core-writers"
+        }
+    },
+    "catalog_acl" : {
+        "acl" : "catalog-policy"
+    }
+}

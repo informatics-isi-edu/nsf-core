@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 30 12:30:13 2018
-
-@author: qingj
-"""
-
-
 from deriva.core import DerivaServer, get_credential
 from deriva.core.ermrest_model import Table, Column, Key,ForeignKey,builtin_types as typ
 import argparse
@@ -46,13 +38,13 @@ key_defs = [
 fkey_defs = [
   ForeignKey.define(
     ["File_RID"], # this is a list to allow for compound foreign keys
-    "public",
+    "Core",
     "File",
     ["RID"], # this is a list to allow for compound keys
     on_update='CASCADE',
     on_delete='SET NULL',
     constraint_names=[ [schema_name, "File_Metadata_Mapping_File_fkey"] ],
-    comment="File_RID must be a valid reference value from the File table.",
+    comment="",
     acls={},
     acl_bindings={},
     annotations={},
@@ -65,7 +57,7 @@ fkey_defs = [
     on_update='CASCADE',
     on_delete='SET NULL',
     constraint_names=[ [schema_name, "File_Metadata_Mapping_Term_fkey"] ],
-    comment="Term_RID must be a valid reference value from the Metadata table.",
+    comment="",
     acls={},
     acl_bindings={},
     annotations={},
