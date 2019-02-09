@@ -63,6 +63,51 @@
       {
          "schema" : "Core",
          "table" : "Step",
+         "uri" : "tag:isrd.isi.edu,2016:export",
+         "value" : {
+            "templates" : [
+               {
+                  "displayname" : "BDBag",
+                  "type" : "BAG",
+                  "outputs" : [
+                     {
+                        "destination" : {
+                           "name" : "Step",
+                           "type" : "csv"
+                        },
+                        "source" : {
+                           "api" : "attribute",
+                           "path": "I:=(Instance_RID)=(Core:Instance:RID)/Instance_Name:=I:Name,Step_RID:=M:RID,Step_Sequence:=M:Sequence,Step_Description:=M:Description"
+                        }
+                     },
+                     {
+                        "destination" : {
+                           "name" : "input_files",
+                           "type" : "download"
+                        },
+                        "source" : {
+                           "api" : "attribute",
+                           "path": "(RID)=(Core:Step_Input_File:Step_RID)/(File_RID)=(Core:File:RID)/url:=URI"
+                        }
+                     },
+                     {
+                        "destination" : {
+                           "name" : "output_files",
+                           "type" : "download"
+                        },
+                        "source" : {
+                           "api" : "attribute",
+                           "path": "(RID)=(Core:Step_Output_File:Step_RID)/(File_RID)=(Core:File:RID)/url:=URI"
+                        }
+                     }
+                  ]
+               }
+            ]
+         }
+      },
+      {
+         "schema" : "Core",
+         "table" : "Step",
          "uri" : "tag:isrd.isi.edu,2016:visible-foreign-keys",
          "value" : {
             "*" : [
@@ -83,22 +128,95 @@
       },
       {
          "schema" : "public",
-         "table" : "ermrest_client",
+         "table" : "ERMrest_Client",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
             "*" : [
-           "id",
-           "full_name",
-           "email"
+           "ID",
+           "Full_Name",
+           "Email"
          ]
          }
       },
       {
          "schema" : "public",
-         "table" : "ermrest_client",
+         "table" : "ERMrest_Client",
          "uri" : "tag:misd.isi.edu,2015:display",
          "value" : {
             "name" : "Contributor"
+         }
+      },
+      {
+         "schema" : "Core",
+         "table" : "Step_Program",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Program_Mapping_Step_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Program_Mapping_Program_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Program_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Program_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Program_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -106,16 +224,59 @@
          "table" : "File_Category",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-            "entry" : [
-           "name",
-           "description"
-         ]
+  "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "File_Category_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "File_Category_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "File_Category_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -123,16 +284,119 @@
          "table" : "Instance_Level",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-            "entry" : [
-           "name",
-           "description"
-         ]
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Instance_Level_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Instance_Level_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Instance_Level_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Science",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": "Synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Science_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Science_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Science_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -140,33 +404,201 @@
          "table" : "Keywords",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-            "entry" : [
-           "name",
-           "description"
-         ]
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Keywords_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Keywords_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Keywords_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
+      {
+         "schema" : "public",
+         "table" : "ERMrest_Group",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+      "*": [
+        {
+          "source": "Display_Name"
+        },
+        {
+          "source": "ID"
+        },
+        {
+          "source": "URL"
+        },
+        {
+          "source": "Description"
+        }
+          ]
+         }
+      },
+
       {
          "schema" : "Vocab",
          "table" : "Step_Type",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-            "entry" : [
-           "name",
-           "description"
-         ]
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Step_Type_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Step_Type_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Step_Type_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
+         }
+      },
+      {
+         "schema" : "Vocab",
+         "table" : "Category",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+       {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Category_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Category_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Category_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -174,76 +606,136 @@
          "table" : "File",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "compact" : [
-           "RID",
-                  {
-                     "markdown_name" : "File Category",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "File_Category_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-           "Name",
-           "URI",
-           "Description",
-           "RCT"
-         ],
-            "detailed" : "compact"
-         }
-      },
-      {
-         "schema" : "Core",
-         "table" : "File_Metadata",
-         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
-         "value" : {
-            "compact" : [
-           "RID",
-           "File_RID",
-           "Metadata_RID",
-           "RCT",
-           "RMT"
-         ],
-            "detailed" : "compact",
-            "entry" : "compact"
-         }
-      },
-      {
-         "schema" : "Vocab",
-         "table" : "Metadata",
-         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
-         "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-           "entry" : [
-           "name",
-           "description"
-         ]
-         }
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "File_Category_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": "URI"
+        },
+        {
+          "source": "Size"
+        },
+        {
+          "source": "MD5"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "File_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "File_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "File_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
+     }
       },
       {
          "schema" : "Vocab",
          "table" : "Domain",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-           "name",
-           "description",
-           "RCT"
-         ],
-            "entry" : [
-           "name",
-           "description"
-         ]
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "name"
+        },
+        {
+          "source": "description"
+        },
+        {
+          "source": "synonyms"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Domain_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Domain_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Vocab",
+                "Domain_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -251,17 +743,68 @@
          "table" : "Program",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "compact" : [
-           "RID",
-           "Name",
-           "Description",
-           "Algorithm",
-           "Code_Reference",
-           "Version",
-           "Environment",
-           "RCT"
-         ],
-            "detailed" : "compact"
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Algorithm"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": "Code_Reference"
+        },
+        {
+          "source": "Version"
+        },
+        {
+          "source": "Environment"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Program_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Program_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Program_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -269,34 +812,46 @@
          "table" : "Instance",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "compact" : [
-           "RID",
-           "Name",
-           "Description",
-                  {
-                     "markdown_name" : "Domain",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Domain_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-                  {
-                     "markdown_name" : "Level",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Level_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
+      "compact": [
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Science_ID_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Domain_RID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Level_RID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
                {
                   "aggregate" : "array",
                   "array_display" : "csv",
@@ -318,50 +873,77 @@
                         "RID"
                      ]
                },
-                  {
-                     "markdown_name" : "Contributor",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_ermrest_client_ID_fkey"
-                           ]
-                        },
-                        "id"
-                     ]
-                  },
-           "RCT"
-         ],
-            "detailed" : [
-           "RID",
-           "Name",
-           "Description",
-                  {
-                     "markdown_name" : "Domain",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Domain_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-                  {
-                     "markdown_name" : "Level",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Level_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },		  
-                  {
-                     "markdown_name" : "Keywords",
+        {
+          "source": "RCT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ],
+      "detailed": [
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Science_ID_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Domain_RID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Level_RID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
+               {
+                  "aggregate" : "array",
+                  "array_display" : "csv",
+                  "entity" : "true",
+                  "markdown_name" : "Keywords",
                      "source" : [
                         {
                            "inbound" : [
@@ -377,22 +959,39 @@
                         },
                         "RID"
                      ]
-                  },
-                  {
-                     "markdown_name" : "Contributor",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_ermrest_client_ID_fkey"
-                           ]
-                        },
-                        "id"
-                     ]
-                  },
-           "Workflow_URI",
-           "RCT"
-         ]
+               },
+        {
+          "source": "Workflow_URI"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -446,40 +1045,171 @@
          }
       },
       {
+         "schema" : "Vocab",
+         "table" : "Science",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      },
+      {
          "schema" : "Core",
          "table" : "Step",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "*" : [
-           "RID",
-                  {
-                     "markdown_name" : "Instance Name",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_Instance_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-           "Sequence",
-                  {
-                     "markdown_name" : "Step",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_Steptype_ID_fkey"
-                           ]
-                        },
-                        "id"
-                     ]
-                  },
-           "Description",
-           "RCT"
-         ]
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": "Name"
+        },
+        {
+          "source": "Description"
+        },
+        {
+          "source": "Instruction"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Steptype_ID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Instance_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": "Sequence"
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
+         }
+      },
+      {
+         "schema" : "Core",
+         "table" : "Step_Output_File",
+         "uri" : "tag:isrd.isi.edu,2016:visible-columns",
+         "value" : {
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_OutputFile_Mapping_Step_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_OutputFile_Mapping_File_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Output_File_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Output_File_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Output_File_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -487,53 +1217,72 @@
          "table" : "Step_Input_File",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "compact" : [
-           "RID",
-                  {
-                     "markdown_name" : "Instance Name",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_InputFile_Mapping_Step_RID_fkey"
-                           ]
-                        },
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_Instance_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-                  {
-                     "markdown_name" : "Step Name",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_InputFile_Mapping_Step_RID_fkey"
-                           ]
-                        },
-                        "Step_Name"
-                     ]
-                  },
-                  {
-                     "markdown_name" : "File Name",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Step_InputFile_Mapping_File_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-           "RCT"
-         ],
-            "detailed" : "compact"
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_InputFile_Mapping_Step_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_InputFile_Mapping_File_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Input_File_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Input_File_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Step_Input_File_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -541,35 +1290,72 @@
          "table" : "Instance_Keywords",
          "uri" : "tag:isrd.isi.edu,2016:visible-columns",
          "value" : {
-            "compact" : [
-           "RID",
-                  {
-                     "markdown_name" : "Instance Name",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Keywords_Mapping_Instance_RID_fkey"
-                           ]
-                        },
-                        "RID"
-                     ]
-                  },
-                  {
-                     "markdown_name" : "Keywords",
-                     "source" : [
-                        {
-                           "outbound" : [
-                              "Core",
-                              "Instance_Keywords_Mapping_Keyword_RID_fkey"
-                           ]
-                        },
-                        "id"
-                     ]
-                  },
-           "RCT"
-         ],
-            "detailed" : "compact"
+      "*": [
+        {
+          "source": "RID"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Keywords_Mapping_Instance_RID_fkey"
+              ]
+            },
+            "RID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Keywords_Mapping_Keyword_RID_fkey"
+              ]
+            },
+            "id"
+          ]
+        },
+        {
+          "source": "RCT"
+        },
+        {
+          "source": "RMT"
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Keywords_RCB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Keywords_RMB_fkey"
+              ]
+            },
+            "ID"
+          ]
+        },
+        {
+          "source": [
+            {
+              "outbound": [
+                "Core",
+                "Instance_Keywords_Catalog_Group_fkey"
+              ]
+            },
+            "ID"
+          ]
+        }
+      ]
          }
       },
       {
@@ -591,6 +1377,24 @@
          }
       },
       {
+         "schema" : "public",
+         "table" : "Catalog_Group",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "*" : {
+               "row_order" : [
+                  {
+                     "column" : "Display_Name",
+                     "descending" : false
+                  }
+               ]
+            },
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Display_Name}}}"
+            }
+         }
+      },
+      {
          "schema" : "Core",
          "table" : "Step",
          "uri" : "tag:isrd.isi.edu,2016:table-display",
@@ -602,17 +1406,23 @@
       },
       {
          "schema" : "public",
-         "table" : "ermrest_client",
+         "table" : "ERMrest_Client",
          "uri" : "tag:isrd.isi.edu,2016:table-display",
          "value" : {
             "row_name" : {
-               "row_markdown_pattern" : "{{{full_name}}}"
+               "row_markdown_pattern" : "{{{Full_Name}}}"
             }
          }
       },
       {
          "schema" : "public",
-         "table" : "ermrest_client",
+         "table" : "ERMrest_Client",
+         "uri" : "tag:isrd.isi.edu,2016:generated",
+         "value" : null
+      },
+      {
+         "schema" : "public",
+         "table" : "ERMrest_Group",
          "uri" : "tag:isrd.isi.edu,2016:generated",
          "value" : null
       }
@@ -651,6 +1461,15 @@
          }
       },
       {
+         "column" : "synonyms",
+         "schema" : "Vocab",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Synonyms"
+         }
+      },
+      {
          "column" : "Instance_RID",
          "schema" : "Core",
          "table_pattern" : ".*",
@@ -660,12 +1479,12 @@
          }
       },
       {
-         "column" : "RCB",
-         "schema_pattern" : ".*",
+         "column" : "Program_RID",
+         "schema" : "Core",
          "table_pattern" : ".*",
          "uri" : "tag:misd.isi.edu,2015:display",
          "value" : {
-            "name" : "Creator"
+            "name" : "Program"
          }
       },
       {
@@ -684,6 +1503,15 @@
          "uri" : "tag:misd.isi.edu,2015:display",
          "value" : {
             "name" : "Level"
+         }
+      },
+      {
+         "column" : "Science_ID",
+         "schema" : "Core",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Science"
          }
       },
       {
@@ -749,39 +1577,23 @@
          }
       },
       {
-         "column" : "id",
-         "schema" : "public",
-         "table" : "ermrest_client",
-         "uri" : "tag:misd.isi.edu,2015:display",
-         "value" : {
-            "name" : "ID"
-         }
-      },
-      {
-         "column" : "email",
-         "schema" : "public",
-         "table" : "ermrest_client",
-         "uri" : "tag:misd.isi.edu,2015:display",
-         "value" : {
-            "name" : "Email"
-         }
-      },
-      {
-         "column" : "full_name",
-         "schema" : "public",
-         "table" : "ermrest_client",
-         "uri" : "tag:misd.isi.edu,2015:display",
-         "value" : {
-            "name" : "Full Name"
-         }
-      },
-      {
          "column" : "URI",
          "schema" : "Core",
          "table" : "File",
          "uri" : "tag:misd.isi.edu,2015:display",
          "value" : {
             "name" : "File"
+         }
+      },
+      {
+         "column" : "Code_Reference",
+         "schema" : "Core",
+         "table" : "Program",
+         "uri" : "tag:isrd.isi.edu,2016:column-display",
+         "value" : {
+            "*" : {
+               "markdown_pattern" : "[{{{Code_Reference}}}]({{{Code_Reference}}})"
+            }
          }
       },
       {
@@ -809,6 +1621,33 @@
          "uri" : "tag:misd.isi.edu,2015:display",
          "value" : {
             "name" : "Creation Time"
+         }
+      },
+      {
+         "column" : "RMB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Modified By"
+         }
+      },
+      {
+         "column" : "Display_Name",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Display Name"
+         }
+      },
+      {
+         "column" : "RCB",
+         "schema_pattern" : ".*",
+         "table_pattern" : ".*",
+         "uri" : "tag:misd.isi.edu,2015:display",
+         "value" : {
+            "name" : "Created By"
          }
       },
       {
