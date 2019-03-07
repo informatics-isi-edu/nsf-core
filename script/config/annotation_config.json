@@ -1377,6 +1377,24 @@
          }
       },
       {
+         "schema" : "Core",
+         "table" : "Step",
+         "uri" : "tag:isrd.isi.edu,2016:table-display",
+         "value" : {
+            "*" : {
+               "row_order" : [
+                  {
+                     "column" : "Sequence",
+                     "descending" : false
+                  }
+               ]
+            },
+            "row_name" : {
+               "row_markdown_pattern" : "{{{Name}}}"
+            }
+         }
+      },
+      {
          "schema" : "public",
          "table" : "Catalog_Group",
          "uri" : "tag:isrd.isi.edu,2016:table-display",
@@ -1391,16 +1409,6 @@
             },
             "row_name" : {
                "row_markdown_pattern" : "{{{Display_Name}}}"
-            }
-         }
-      },
-      {
-         "schema" : "Core",
-         "table" : "Step",
-         "uri" : "tag:isrd.isi.edu,2016:table-display",
-         "value" : {
-            "row_name" : {
-               "row_markdown_pattern" : "{{{Name}}}"
             }
          }
       },
